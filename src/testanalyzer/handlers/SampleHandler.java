@@ -12,7 +12,9 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
+
 public class SampleHandler extends AbstractHandler {
+	private static final String message = "My test message";
 	/**
 	 * The constructor.
 	 */
@@ -28,7 +30,7 @@ public class SampleHandler extends AbstractHandler {
 		MessageDialog.openInformation(
 				window.getShell(),
 				"TestAnalyzer",
-				"Hello, Eclipse world");
+				message);
 		return null;
 	}
 }
