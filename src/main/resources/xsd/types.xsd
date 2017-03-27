@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New XSD document created with EditiX XML Editor (http://www.editix.com) at Sat Mar 25 17:21:54 MSK 2017 -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:annotation>
+		<xs:documentation>Created with EditiX (http://www.editix.com) at Sat Mar 25 17:47:13 MSK 2017</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="XmlAlertType">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="id" type="xs:integer"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="timestamp" type="xs:dateTime"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="description" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="weaknessId" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XmlMitreSourceType">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="name" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="number" type="xs:integer"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="url" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XmlWeaknessType">
+		<xs:sequence>
+			<xs:element maxOccurs="1" minOccurs="1" name="description" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="category" type="xs:string"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="cwe" type="XmlMitreSourceType"/>
+			<xs:element maxOccurs="1" minOccurs="1" name="capec" type="XmlMitreSourceType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="XmlAlert" type="XmlAlertType"/>
+	<xs:element name="XmlWeakness" type="XmlWeaknessType"/>
+	<xs:element name="XmlMitreSource" type="XmlMitreSourceType"/>
+</xs:schema>
