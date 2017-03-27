@@ -1,9 +1,14 @@
 package main.java.bmstu.iu8.analyzer.datasource.marshallers;
 
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,18 +31,38 @@ public class JAXBMarshaller implements DatasourceMarshaller {
 	}
 	
 	@Override
-	public String marshall(Object object) {
+	public String marshal(Object object) {
 		String result = "";
 		if (marshaller != null) {
-			result = marshaller.ma
+			try (StringWriter writer = new StringWriter()) {
+				try {
+					marshaller.marshal(object, writer);
+					result = writer.toString();
+				} catch (JAXBException e) {
+					LOGGER.error("Cannot marshall object: " + object.toString());
+					LOGGER.error("Error message: " + e.getMessage());
+				}
+			}
+			catch (IOException e) {
+				LOGGER.error("Cannot close stringWriter!");
+				LOGGER.error("Error message: " + e.getMessage());
+			}
 		}
 		return result;
 	}
 
 	@Override
-	public Object marshall(String source) {
-		// TODO Auto-generated method stub
-		return null;
+	public Object marshal(String source) {
+		Object result = null;
+		if (source !=null && !source.isEmpty()) {
+			try {
+				result = unmarshaller.unmarshal(new StreamSource(new StringReader(source)));
+			} catch (JAXBException e) {
+				LOGGER.error("Cannot unmarshall from text: " + source);
+				LOGGER.error("Error message: " + e.getMessage());
+			}
+		}
+		return result;
 	}
 
 	private JAXBContext initializeContext(String packageName) {
