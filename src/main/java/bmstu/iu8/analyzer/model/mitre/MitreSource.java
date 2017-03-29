@@ -13,6 +13,13 @@ public abstract class MitreSource {
 		setDescriptionUrl(descriptionUrl);
 	}
 	
+	public MitreSource() {
+		super();
+		setName("");
+		setNumber(-1);
+		setDescriptionUrl("");
+	}
+	
 	@Override
 	public String toString() {
 		return 

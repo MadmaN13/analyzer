@@ -6,6 +6,10 @@ public class CAPEC extends MitreSource {
 		super(name, number, descriptionUrl);
 	}
 	
+	public CAPEC() {
+		super();
+	}
+	
 	@Override
 	public String toString() {
 		return 

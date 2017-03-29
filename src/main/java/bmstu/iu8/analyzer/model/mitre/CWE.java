@@ -6,6 +6,10 @@ public class CWE extends MitreSource {
 		super(name, number, descriptionUrl);
 	}
 	
+	public CWE() {
+		super();
+	}
+	
 	@Override
 	public String toString() {
 		return 
