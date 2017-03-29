@@ -57,8 +57,18 @@ public class XmlAlertType {
     protected String description;
     @XmlElement(required = true)
     protected BigInteger weaknessId;
+    
+    public XmlAlertType() {};
 
-    /**
+    public XmlAlertType(BigInteger id, XMLGregorianCalendar timestamp, String description, BigInteger weaknessId) {
+		super();
+		this.id = id;
+		this.timestamp = timestamp;
+		this.description = description;
+		this.weaknessId = weaknessId;
+	}
+
+	/**
      * Gets the value of the id property.
      * 
      * @return

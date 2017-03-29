@@ -53,8 +53,18 @@ public class XmlWeaknessType {
     protected XmlMitreSourceType cwe;
     @XmlElement(required = true)
     protected XmlMitreSourceType capec;
+    
+    public XmlWeaknessType() {};
 
-    /**
+    public XmlWeaknessType(String description, String category, XmlMitreSourceType cwe, XmlMitreSourceType capec) {
+		super();
+		this.description = description;
+		this.category = category;
+		this.cwe = cwe;
+		this.capec = capec;
+	}
+
+	/**
      * Gets the value of the description property.
      * 
      * @return

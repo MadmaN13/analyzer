@@ -50,8 +50,17 @@ public class XmlMitreSourceType {
     protected BigInteger number;
     @XmlElement(required = true)
     protected String url;
+    
+    public XmlMitreSourceType() {};
 
-    /**
+    public XmlMitreSourceType(String name, BigInteger number, String url) {
+		super();
+		this.name = name;
+		this.number = number;
+		this.url = url;
+	}
+
+	/**
      * Gets the value of the name property.
      * 
      * @return

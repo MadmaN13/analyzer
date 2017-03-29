@@ -8,9 +8,12 @@
 
 package main.java.bmstu.iu8.analyzer.datasource.xml;
 
+import java.math.BigInteger;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
 
 
@@ -46,24 +49,40 @@ public class ObjectFactory {
      * Create an instance of {@link XmlAlertType }
      * 
      */
+    
     public XmlAlertType createXmlAlertType() {
         return new XmlAlertType();
+    }
+    
+    public XmlAlertType createXmlAlertType(BigInteger id, XMLGregorianCalendar timestamp, String description, BigInteger weaknessId) {
+        return new XmlAlertType(id, timestamp, description, weaknessId);
     }
 
     /**
      * Create an instance of {@link XmlMitreSourceType }
      * 
      */
+    
     public XmlMitreSourceType createXmlMitreSourceType() {
         return new XmlMitreSourceType();
+    }
+    
+    public XmlMitreSourceType createXmlMitreSourceType(String name, BigInteger number, String url) {
+        return new XmlMitreSourceType(name, number, url);
     }
 
     /**
      * Create an instance of {@link XmlWeaknessType }
      * 
      */
+    
     public XmlWeaknessType createXmlWeaknessType() {
         return new XmlWeaknessType();
+    }
+
+    
+    public XmlWeaknessType createXmlWeaknessType(String description, String category, XmlMitreSourceType cwe, XmlMitreSourceType capec) {
+        return new XmlWeaknessType(description, category, cwe, capec);
     }
 
     /**
