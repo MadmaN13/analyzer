@@ -12,6 +12,15 @@ public class Weakness {
 	private CAPEC capec;
 	private Pattern pattern;
 	
+	public Weakness() {
+		super();
+		setDescription("");
+		setCategory("");
+		setCwe(new CWE());
+		setCapec(new CAPEC());
+		setPattern(null);
+	}
+	
 	public Weakness(String description, String category, CWE cwe, CAPEC capec, Pattern pattern) {
 		super();
 		setDescription(description);
@@ -21,6 +30,7 @@ public class Weakness {
 		setPattern(pattern);
 	}
 	
+
 	@Override
 	public String toString() {
 		return "Description: " + getDescription() + "\r\n" +

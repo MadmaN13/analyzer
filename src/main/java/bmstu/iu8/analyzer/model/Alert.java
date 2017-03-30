@@ -3,16 +3,29 @@ package main.java.bmstu.iu8.analyzer.model;
 import java.util.Date;
 
 public class Alert {
+	private int id;
 	private Date timestamp;
 	private String occurenceDescription;
 	private Weakness weakness;
+	private int weaknessId;
 	
-	public Alert(Date timestamp, String occurenceDescription, 
-			Weakness weakness) {
+	public Alert() {
+		super();
+		setId(-1);
+		setTimestamp(new Date());
+		setOccurenceDescription("");
+		setWeakness(new Weakness());
+		setWeaknessId(-1);
+	}
+	
+	public Alert(int id, Date timestamp, String occurenceDescription, int weaknessId) {
+		setId(id);
 		setTimestamp(timestamp);
 		setOccurenceDescription(occurenceDescription);
-		setWeakness(weakness);
+		setWeakness(new Weakness());
+		setWeaknessId(weaknessId);
 	}
+
 
 	@Override
 	public String toString() {
@@ -40,8 +53,24 @@ public class Alert {
 		return weakness;
 	}
 
-	private void setWeakness(Weakness weakness) {
+	public void setWeakness(Weakness weakness) {
 		this.weakness = weakness;
+	}
+
+	public int getWeaknessId() {
+		return weaknessId;
+	}
+
+	public void setWeaknessId(int weaknessId) {
+		this.weaknessId = weaknessId;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	private void setId(int id) {
+		this.id = id;
 	}
 
 }
