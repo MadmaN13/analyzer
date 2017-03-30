@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><XmlMitreSource><name>test mitre source</name><number>1</number><url>url/test/org/mitre/source</url></XmlMitreSource>

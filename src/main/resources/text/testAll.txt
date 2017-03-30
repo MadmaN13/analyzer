@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><XmlMitreSource><name>test mitre source</name><number>1</number><url>url/test/org/mitre/source</url></XmlMitreSource>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><XmlWeakness><description>test weakness</description><category>test category</category><cwe><name>test mitre source</name><number>1</number><url>url/test/org/mitre/source</url></cwe><capec><name>test mitre source</name><number>1</number><url>url/test/org/mitre/source</url></capec></XmlWeakness>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><XmlAlert><id>1</id><timestamp>2017-03-29T18:04:28.133+03:00</timestamp><description>test alert</description><weaknessId>2</weaknessId></XmlAlert>

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><XmlAlert><id>1</id><timestamp>2017-03-29T18:04:28.133+03:00</timestamp><description>test alert</description><weaknessId>2</weaknessId></XmlAlert>
