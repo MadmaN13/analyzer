@@ -61,7 +61,7 @@ public class XmlToObjectMappersTest {
 		assertTrue(objectSource instanceof JAXBElement<?>);
 		
 		CWE cwe = cweMapper.map((JAXBElement<XmlMitreSourceType>) objectSource);
-		LOGGER.info("CWE mapped: " + cwe.toString());
+		LOGGER.info("CWE mapped: " + "\r\n" + cwe.toString());
 		assertNotNull(cwe);
 		assertEquals("test mitre source", cwe.getName());
 		assertEquals(1, cwe.getNumber());
@@ -78,7 +78,7 @@ public class XmlToObjectMappersTest {
 		assertTrue(objectSource instanceof JAXBElement<?>);
 		
 		CAPEC capec = capecMapper.map((JAXBElement<XmlMitreSourceType>) objectSource);
-		LOGGER.info("CAPEC mapped: " + capec.toString());
+		LOGGER.info("CAPEC mapped: " + "\r\n" + capec.toString());
 		assertNotNull(capec);
 		assertEquals("test mitre source", capec.getName());
 		assertEquals(1, capec.getNumber());
@@ -94,14 +94,17 @@ public class XmlToObjectMappersTest {
 		assertTrue(objectSource instanceof JAXBElement<?>);
 		
 		Weakness weakness = weaknessMapper.map((JAXBElement<XmlWeaknessType>) objectSource);
-		LOGGER.info("Weakness mapped: " + weakness.toString());
+		LOGGER.info("Weakness mapped: " + "\r\n" + weakness.toString());
 		assertNotNull(weakness);
 		assertEquals("test category", weakness.getCategory());
-		assertEquals("test weakness", weakness.getDescription());
+		assertEquals("test weakness", weakness.getName());
 		assertNull(weakness.getPattern());
 		
-		assertMitreSourceEquals(weakness.getCapec());
-		assertMitreSourceEquals(weakness.getCwe());
+		CAPEC testCapec = new CAPEC("test mitre source", 1, "url/test/org/mitre/source");
+		CWE testCwe = new CWE("test mitre source", 1, "url/test/org/mitre/source");
+		
+		assertMitreSourceEquals(testCapec, weakness.getCapec());
+		assertMitreSourceEquals(testCwe, weakness.getCwe());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -114,7 +117,7 @@ public class XmlToObjectMappersTest {
 		assertTrue(objectSource instanceof JAXBElement<?>);
 		
 		Alert alert = alertMapper.map((JAXBElement<XmlAlertType>) objectSource);
-		LOGGER.info("Alert mapped: " + alert.toString());
+		LOGGER.info("Alert mapped: " + "\r\n" + alert.toString());
 		assertNotNull(alert);
 		
 		assertEquals(1, alert.getId());
@@ -129,14 +132,14 @@ public class XmlToObjectMappersTest {
 		assertMitreSourceEquals(expected.getCapec(), actual.getCapec());
 		assertEquals(expected.getCategory(), actual.getCategory());
 		assertMitreSourceEquals(expected.getCwe(), actual.getCwe());
-		assertEquals(expected.getDescription(), actual.getDescription());
+		assertEquals(expected.getName(), actual.getName());
 		assertEquals(expected.getPattern(), actual.getPattern());
 	}
 	
 	private void assertMitreSourceEquals(MitreSource expected, MitreSource actual) {
-		assertEquals("test mitre source", actual.getName());
-		assertEquals("url/test/org/mitre/source", actual.getDescriptionUrl());
-		assertEquals(1, actual.getNumber());
+		assertEquals(expected.getName(), actual.getName());
+		assertEquals(expected.getDescriptionUrl(), actual.getDescriptionUrl());
+		assertTrue(expected.getNumber() == actual.getNumber());
 	}
 
 	private String readXml(String path) {

@@ -6,7 +6,7 @@ import main.java.bmstu.iu8.analyzer.model.patterns.Pattern;
 
 public class Weakness {
 	
-	private String description;
+	private String name;
 	private String category;
 	private CWE cwe;
 	private CAPEC capec;
@@ -14,16 +14,16 @@ public class Weakness {
 	
 	public Weakness() {
 		super();
-		setDescription("");
+		setName("");
 		setCategory("");
 		setCwe(new CWE());
 		setCapec(new CAPEC());
 		setPattern(null);
 	}
 	
-	public Weakness(String description, String category, CWE cwe, CAPEC capec, Pattern pattern) {
+	public Weakness(String name, String category, CWE cwe, CAPEC capec, Pattern pattern) {
 		super();
-		setDescription(description);
+		setName(name);
 		setCategory(category);
 		setCwe(cwe);
 		setCapec(capec);
@@ -33,18 +33,18 @@ public class Weakness {
 
 	@Override
 	public String toString() {
-		return "Description: " + getDescription() + "\r\n" +
+		return "Description: " + getName() + "\r\n" +
 				"Category: " + getCategory() + "\r\n" +
 				"CWE: " + cwe.getName() + "\r\n" +
-				"CAPEC: " + capec.getName() + "\r\n" +
-				"Pattern: " + pattern.toString() + "\r\n" ;
+				"CAPEC: " + capec.getName() + "\r\n" ;
+//				"Pattern: " + pattern.toString() + "\r\n" ;
 	}
 	
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
-	private void setDescription(String description) {
-		this.description = description;
+	private void setName(String name) {
+		this.name = name;
 	}
 	public String getCategory() {
 		return category;

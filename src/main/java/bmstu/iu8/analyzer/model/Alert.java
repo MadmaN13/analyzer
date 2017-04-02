@@ -31,7 +31,7 @@ public class Alert {
 	public String toString() {
 		return "Timestamp: " + getTimestamp().toString() + "\r\n" +
 				"Description: " + getOccurenceDescription() + "\r\n" +
-				"Weakness: " + weakness.getDescription() + "\r\n";
+				"Weakness: " + weakness.getName() + "\r\n";
 	}
 	
 	public Date getTimestamp() {
