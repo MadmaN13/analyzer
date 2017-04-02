@@ -5,3 +5,4 @@ bin/
 icons/
 src/main/resources/io
 logs/
+*.log
